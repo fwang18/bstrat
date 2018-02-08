@@ -1,4 +1,4 @@
 {"name": "Nick","prop":{"age": 32, "zipcode": 94607, "DMID": 388167}}
 {"name": "Jingjue","prop":{"age": 18	, "DMID": 388167}}
-{"name": "Chen","prop":{"zipcode": 94607, "age": 18}}
+{"name": "Chen","prop":{"zipcode": 94607}
 {"name": "Natalie","prop":{"age": 16, "zipcode": 94607}}
