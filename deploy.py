@@ -2,7 +2,7 @@
 import paramiko
 
 
-def deploy(key_path, server_address, prefx):
+def deploy(key_path, server_address, prefix):
 	print("Connecting to box")
 	ssh = paramiko.SSHClient()
 	ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())

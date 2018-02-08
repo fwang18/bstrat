@@ -1,0 +1,18 @@
+sample.json --all normal
+sample0.txt --file type error
+sample1.json --lack a '}'
+sample3.json --two comma combined
+sample4.json --one more ']'
+sample5.json --lack a '{'
+sample6.json -- one more '{'
+sample7.json -- one more '}'
+
+
+# some key is missing
+sample2.json --name in wrong location
+sample8.json --miss name
+sample9.json --name is empty
+sample10.json --age in wrong location
+sample11.json --age is negative
+
+
