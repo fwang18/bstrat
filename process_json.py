@@ -1,37 +1,46 @@
 import os
 import json
+import sys
 
 def find_files(path, prefix):
 	files = [f for f in os.listdir(path) if f.startswith(prefix)]
 	if len(files) == 0: 
-    	return "NO FILE STARTS WITH" + prefix
-	otherwise:
+        	return "NO FILE STARTS WITH" + prefix
+	else:
 		file_paths = [os.path.join(path, f) for f in files]
 		return file_paths
 
-def is_json(filepath):
-	try:
-		json_object = json.loads(filepath)
-	except ValueError:
-		continue
-	return json_object
+       # data.append(json.loads(line))
+def fetch_elements(filepath):
+	output_for_one = ''
+	with open(filepath) as f:
+		for line in f:
+			try:
+				json_object = json.loads(line)
+				try:
+					name = json_object['name']
+					age = json_object['prop']['age']
+                                        if age > 0:
+                                            output_for_one = output_for_one + name + '\t' + str(age) + '\t'
+				except KeyError:
+					continue
+			except ValueError:
+				continue
+                return output_for_one[:-1]
 
-def find_elements(json_object):
-	try:
-		name = json_object['name']
-		age = json_object['prop']['age']
-	except KeyError:
-		continue
-	return name, age
+mypath = sys.argv[1]
+myprefix = sys.argv[2]
 
-files = find_files(path, prefix)
-valid_files = [is_json(f) for f in files]
+filepaths = find_files(mypath, myprefix)
 
-output = ''
-for f in valid_files:
-	name, age = find_elements(f)
-	name_age = '\t'.join(name, age)
-	output = '\t'.join(output, name_age)
+all_output = ''
+for f in filepaths:
+	output_for_one = fetch_elements(f)
+        if len(output_for_one) > 0:
+	    all_output = all_output + '\n' + output_for_one
 
-print output
 
+write_to = mypath +"/"+ myprefix + '.txt'
+with open(write_to, 'w+') as f:
+    f.write(all_output[1:])
+    f.close()
