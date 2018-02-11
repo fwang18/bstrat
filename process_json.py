@@ -43,6 +43,6 @@ for f in filepaths:
 
 
 write_to = mypath +"/"+ myprefix + '.txt'
-with open(write_to, 'w+') as f:
+with open(write_to, 'w') as f:
     f.write(all_output[1:])
     f.close()
