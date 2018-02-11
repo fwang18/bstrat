@@ -22,6 +22,7 @@ def deploy(key_path, server_address, prefix):
 	ssh.exec_command('cd bstrat/')
 	#ssh.exec_command('crontab -r') #might cause a problem when multiple tests are conducted at the same time
 
+	ssh.exec_command('(rm /srv/runme/%s)' % prefix)
 	ssh.exec_command('crontab -r')
 	ssh.exec_command('(crontab -l ; echo "*/5 * * * * python /home/testtest/bstrat/process_json.py /srv/runme %s") | crontab -' % prefix)
 	#to test, change '*/5 * * * *' into '*/1 * * * *'
