@@ -29,6 +29,7 @@ def deploy(key_path, server_address, prefix):
 
 	print("process finished")
 
+	ssh.close()
 
 #### running example, commented when submitted, uncomment for test use
 
