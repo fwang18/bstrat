@@ -23,7 +23,7 @@ def fetch_elements(filepath):
                                     
                                         if age > 0:
                                             if len(name)!=0:
-                                                output_for_one = output_for_one + name + '\t' + str(age) + filepath+'\n'
+                                                output_for_one = output_for_one + name + '\t' + str(age) + '\n'
 				except KeyError:
 					continue
 			except ValueError:
