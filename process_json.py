@@ -39,7 +39,7 @@ all_output = ''
 for f in filepaths:
 	output_for_one = fetch_elements(f)
         if len(output_for_one) > 0:
-            all_output = all_output + '\n' + output_for_one
+            all_output = all_output + '\n' + output_for_one + f
 
 
 write_to = mypath +"/"+ myprefix + '.txt'
