@@ -33,5 +33,5 @@ def deploy(key_path, server_address, prefix):
 
 #### running example, commented when submitted, uncomment for test use
 
-if __name__ == "__main__":
-	deploy('/Users/chengcheng/credentials/bstrat.pem', 'ec2-34-211-189-8.us-west-2.compute.amazonaws.com', "sample")
+# if __name__ == "__main__":
+# 	deploy('/Users/chengcheng/credentials/bstrat.pem', 'ec2-34-211-189-8.us-west-2.compute.amazonaws.com', "sample")
