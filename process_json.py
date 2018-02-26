@@ -11,6 +11,22 @@ def find_files(path, prefix):
 		return file_paths
 
        # data.append(json.loads(line))
+
+def process_one(json_object):
+    output_for_one = ''
+    try:
+        json_object = json.loads(json_object)
+        try:
+            name = json_object['name']
+            age = json_object['prop']['age']
+
+            if age > 0:
+                if len(name)!=0:
+                    output_for_one = output_for_one + name + '\t' + str(age)
+        except KeyError: pass#continue
+    except ValueError: pass#continue
+    return output_for_one
+
 def fetch_elements(filepath):
 	output_for_one = ''
 	with open(filepath) as f:
@@ -30,19 +46,20 @@ def fetch_elements(filepath):
 				continue
                 return output_for_one[:-1]
 
-mypath = sys.argv[1]
-myprefix = sys.argv[2]
+if __name__== "__main__":
+    mypath = sys.argv[1]
+    myprefix = sys.argv[2]
 
-filepaths = find_files(mypath, myprefix)
+    filepaths = find_files(mypath, myprefix)
 
-all_output = ''
-for f in filepaths:
-	output_for_one = fetch_elements(f)
-        if len(output_for_one) > 0:
-            all_output = all_output + '\n' + output_for_one
+    all_output = ''
+    for f in filepaths:
+    	    output_for_one = fetch_elements(f)
+            if len(output_for_one) > 0:
+                all_output = all_output + '\n' + output_for_one
 
 
-write_to = mypath +"/"+ myprefix + '.txt'
-with open(write_to, 'w+') as f:
-    f.write(all_output[1:])
-    f.close()
+    write_to = mypath +"/"+ myprefix + '.txt'
+    with open(write_to, 'w+') as f:
+        f.write(all_output[1:])
+        f.close()
