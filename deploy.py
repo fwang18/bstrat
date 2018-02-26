@@ -22,9 +22,10 @@ def deploy(key_path, server_address, prefix):
 	ssh.exec_command('cd bstrat/')
 	ssh.exec_command('crontab -r') #might cause a problem when multiple tests are conducted at the same time
 
+        ## should set log rotation here
 	#ssh.exec_command('(crontab -l ; echo "*/5 * * * * python /home/testtest/bstrat/process_json.py /srv/runme %s") | crontab -' % prefix)
-	ssh.exec_command('python set_flask.py')
-        #to test, change '*/5 * * * *' into '*/1 * * * *'
+	
+        ssh.exec_command('python set_flask.py')
 
 	ssh.close()
 
