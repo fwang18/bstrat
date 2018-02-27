@@ -3,6 +3,8 @@ from process_json import *
 from flask import request
 import sys
 
+print('flask triggered')
+
 app = Flask(__name__)
 prefix = ""
 
