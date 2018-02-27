@@ -28,7 +28,7 @@ def create_timed_rotating_log(path):
     logger.addHandler(handler)
  
     for i in range(6):
-        logger.info("This is a test!")
+        logger.info("")
         time.sleep(75)
 
 #----------------------------------------------------------------------
