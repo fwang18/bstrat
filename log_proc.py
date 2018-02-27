@@ -32,6 +32,6 @@ def create_timed_rotating_log(path):
 
 #----------------------------------------------------------------------
 if __name__ == "__main__":
-    log_file = "/srv/runme/" + sys.argv[2] + "/proc.txt"
+    log_file = "/srv/runme/" + sys.argv[1] + "/proc.txt"
     # log_file = "/srv/runme/sample/proc.txt"
     create_timed_rotating_log(log_file)
