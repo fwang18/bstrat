@@ -18,13 +18,20 @@ def deploy(key_path, server_address, prefix):
     # git clone the git respository
     ssh.exec_command('rm -rf bstrat_sprint_project') #remove old ones so we can write new repo 
     ssh.exec_command('git clone https://github.com/fwang18/bstrat_sprint_project.git')
-    ssh.exec_command('cd bstrat_sprint_project/')
-    ssh.exec_command('crontab -r') #might cause a problem when multiple tests are conducted at the same time
+
+    # Clean /srv/runme/{prefix}
+    ssh.exec_command("rm /srv/runme/" + prefix + "/Raw.*")
+    ssh.exec_command("rm /srv/runme/" + prefix + "/proc.*")
+    ssh.exec_command("> /srv/runme/" + prefix + "/Raw.txt")
+    ssh.exec_command("> /srv/runme/" + prefix + "/proc.txt")
+
+    # launch flask app	
+    ssh.exec_command('python bstrat_sprint_project/set_flask.py ' + prefix)
     
-    ## should set log rotation here
-    #ssh.exec_command('(crontab -l ; echo "*/5 * * * * python /home/testtest/bstrat/process_json.py /srv/runme %s") | crontab -' % prefix)
-    
-    ssh.exec_command('python set_flask.py > tmp.log')
+    # start log rotation
+    ssh.exec_command('python bstrat_sprint_project/log_proc.py  ' + prefix)
+    ssh.exec_command('python bstrat_sprint_project/log_Raw.py  ' + prefix)
+
     ssh.close()
 
 #### running example, commented when submitted, uncomment for test use

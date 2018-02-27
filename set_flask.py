@@ -25,5 +25,5 @@ def process_json():
 
 if __name__ == '__main__':
     prefix = sys.argv[1]
-    # print(prefix)
+    print(prefix)
     app.run('0.0.0.0', port=8080)
