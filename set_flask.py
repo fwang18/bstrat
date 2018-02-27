@@ -13,18 +13,14 @@ def hello_world():
     add_line('root.txt', 'hello')
     return 'Hello World!'  
 
-@app.route('/hi_nick')
-def hi_nick():
-    add_line('hi_nick.txt', 'too much hws')
-    return 'we don\'t love u at all'
-
-@app.route('/application/<json_b>')
+@app.route('/application/<json_b>', methods = ["POST"])
 def process_json(json_b):
     add_line('Raw.txt', json_b)
     a=process_one(json_b)
     if a is not None:
         add_line('proc.txt', a)
     return a
+ 
 
 
 if __name__ == '__main__':
